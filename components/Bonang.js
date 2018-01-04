@@ -6,33 +6,6 @@ import {TabNavigator} from 'react-navigation'
 import BonangPic from '../assets/bonang.png'
 import {setUpSoundObject} from '../utils/sounds'
 
-import low1 from '../assets/BonangNL-Low1.wav'
-import low2 from '../assets/BonangNL-Low2.wav'
-import low3 from '../assets/BonangNL-Low3.wav'
-import low5 from '../assets/BonangNL-Low5.wav'
-import low6 from '../assets/BonangNL-Low6.wav'
-import mid1 from '../assets/BonangNL-Mid1.wav'
-import mid2 from '../assets/BonangNL-Mid2.wav'
-import mid3 from '../assets/BonangNL-Mid3.wav'
-import high5 from '../assets/BonangNL-High5.wav'
-import high6 from '../assets/BonangNL-High6.wav'
-import high1 from '../assets/BonangNL-High1.wav'
-import high2 from '../assets/BonangNL-High2.wav'
-
-const audioFileObject = {low1, low2, low3, low5, low6, mid1, mid2, mid3, high5, high6, high1, high2}
-
-const fileNames = Object.keys(audioFileObject)
-
-const soundElements = fileNames.map(file => new Audio.Sound())
-
-soundElements.forEach((element, index) => {
-  try {
-    element.loadAsync(audioFileObject[fileNames[index]], {}, true)
-
-  } catch (err) {
-    console.error(err)
-  }
-})
 
 const BonangScreen = () => (
   <View style={styles.container}>
@@ -67,7 +40,6 @@ const styles = StyleSheet.create({
   low1: {
     height: 70,
     width: 100,
-    borderWidth: 2,
     borderRadius: 50,
     position: 'absolute',
     left: '80%',
@@ -76,7 +48,6 @@ const styles = StyleSheet.create({
   low2: {
     height: 80,
     width: 100,
-    borderWidth: 2,
     borderRadius: 50,
     position: 'absolute',
     left: '22%',
@@ -85,7 +56,6 @@ const styles = StyleSheet.create({
   low3: {
     height: 80,
     width: 110,
-    borderWidth: 2,
     borderRadius: 50,
     position: 'absolute',
     left: '35%',
@@ -94,7 +64,6 @@ const styles = StyleSheet.create({
   low5: {
     height: 80,
     width: 110,
-    borderWidth: 2,
     borderRadius: 50,
     position: 'absolute',
     left: '51%',
@@ -103,7 +72,6 @@ const styles = StyleSheet.create({
   low6: {
     height: 80,
     width: 110,
-    borderWidth: 2,
     borderRadius: 50,
     position: 'absolute',
     left: '66%',
@@ -112,7 +80,6 @@ const styles = StyleSheet.create({
   mid1: {
     height: 80,
     width: 110,
-    borderWidth: 2,
     borderRadius: 50,
     position: 'absolute',
     left: '6%',
@@ -121,7 +88,6 @@ const styles = StyleSheet.create({
   mid2: {
     height: 60,
     width: 90,
-    borderWidth: 2,
     borderRadius: 50,
     position: 'absolute',
     left: '51%',
@@ -130,7 +96,6 @@ const styles = StyleSheet.create({
   mid3: {
     height: 60,
     width: 90,
-    borderWidth: 2,
     borderRadius: 50,
     position: 'absolute',
     left: '37%',
@@ -139,7 +104,6 @@ const styles = StyleSheet.create({
   high5: {
     height: 60,
     width: 90,
-    borderWidth: 2,
     borderRadius: 50,
     position: 'absolute',
     left: '24%',
@@ -148,7 +112,6 @@ const styles = StyleSheet.create({
   high6: {
     height: 60,
     width: 90,
-    borderWidth: 2,
     borderRadius: 50,
     position: 'absolute',
     left: '9%',
@@ -157,7 +120,6 @@ const styles = StyleSheet.create({
   high1: {
     height: 60,
     width: 90,
-    borderWidth: 2,
     borderRadius: 50,
     position: 'absolute',
     left: '65%',
@@ -166,7 +128,6 @@ const styles = StyleSheet.create({
   high2: {
     height: 60,
     width: 90,
-    borderWidth: 2,
     borderRadius: 50,
     position: 'absolute',
     left: '78%',
