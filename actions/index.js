@@ -31,12 +31,6 @@ const loadedPelog = (sounds, names, elements) => ({
 export const loadSlendroThunk = (sounds, names, elements) => dispatch => {
 
   elements.forEach((element, index) => {
-    element.setOnPlaybackStatusUpdate((status) => {
-      if (status.didJustFinish) {
-        element.pauseAsync()
-        element.setPositionAsync(0)
-      }
-    })
     element.loadAsync(sounds[names[index]], {}, true)
   })
   Promise.all(elements)
@@ -47,12 +41,6 @@ export const loadSlendroThunk = (sounds, names, elements) => dispatch => {
 
 export const loadPelogThunk = (sounds, names, elements) => dispatch => {
   elements.forEach((element, index) => {
-    element.setOnPlaybackStatusUpdate((status) => {
-      if (status.didJustFinish) {
-        element.pauseAsync()
-        element.setPositionAsync(0)
-      }
-    })
     element.loadAsync(sounds[names[index]], {}, true)
   })
   Promise.all(elements)

@@ -16,7 +16,8 @@ class Pot extends React.Component {
         onStartShouldSetResponderCapture={(evt) => true}
         onResponderGrant={(evt) => {
           this.setState({isActive: true})
-          this.props.soundElement.playAsync()
+          this.props.soundElement.pauseAsync()
+            .then(() => this.props.soundElement.playFromPositionAsync(0))
         }}
         onResponderTerminationRequest={(evt) => true}
         onResponderRelease={(evt) => {
