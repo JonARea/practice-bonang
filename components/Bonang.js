@@ -1,5 +1,6 @@
 import React from 'react'
 import {View, Image, TouchableOpacity, StyleSheet, Text} from 'react-native'
+import Pot from './Pot'
 import {Audio} from 'expo'
 import {TabNavigator} from 'react-navigation'
 import BonangPic from '../assets/bonang.png'
@@ -18,13 +19,15 @@ import high6 from '../assets/BonangNL-High6.wav'
 import high1 from '../assets/BonangNL-High1.wav'
 import high2 from '../assets/BonangNL-High2.wav'
 
-const audioFileArray = [low1, low2, low3, low5, low6, mid1, mid2, mid3, high5, high6, high1, high2]
+const audioFileObject = {low1, low2, low3, low5, low6, mid1, mid2, mid3, high5, high6, high1, high2}
 
-const soundElements = audioFileArray.map(file => new Audio.Sound())
+const fileNames = Object.keys(audioFileObject)
+
+const soundElements = fileNames.map(file => new Audio.Sound())
 
 soundElements.forEach((element, index) => {
   try {
-    element.loadAsync(audioFileArray[index], {}, true)
+    element.loadAsync(audioFileObject[fileNames[index]], {}, true)
     element.setOnPlaybackStatusUpdate(status => {
       if (status.didJustFinish) {
         element.pauseAsync()
@@ -36,37 +39,24 @@ soundElements.forEach((element, index) => {
   }
 })
 
-class BonangScreen extends React.Component {
-
-  render() {
-
-      return (<View style={styles.container}>
-        <Image
-          source={BonangPic}
-          style={styles.bonang}
+const BonangScreen = () => (
+  <View style={styles.container}>
+    <Image
+      source={BonangPic}
+      style={styles.bonang}
+    />
+    {soundElements.map((element, index) => (
+        <Pot
+          key={index}
+          style={styles[fileNames[index]]}
+          soundElement={element}
+          name={fileNames[index]}
         />
-        <View
-
-         style={styles.low1}
-         onStartShouldSetResponderCapture={(evt) => true}
-         onResponderGrant={(evt) => {low1Sound.playAsync()}}
-        >
-         <Text> Low 1 </Text>
-       </View>
-
-       <View
-
-         style={styles.low2}
-         onStartShouldSetResponderCapture={(evt) => true}
-         onResponderGrant={(evt) => {low2Sound.playAsync()}}
-        >
-         <Text> Low 1 </Text>
-       </View>
-      </View>
       )
-  }
-}
+    )}
 
+  </View>
+)
 
 const styles = StyleSheet.create({
   container: {
@@ -80,22 +70,112 @@ const styles = StyleSheet.create({
     position: 'absolute'
   },
   low1: {
-    height: 80,
-    width: 120,
+    height: 70,
+    width: 100,
     borderWidth: 2,
     borderRadius: 50,
-    position: 'relative',
-    left: 290,
-    top: 60
+    position: 'absolute',
+    left: 640,
+    top: 140
   },
   low2: {
+    height: 80,
+    width: 100,
+    borderWidth: 2,
+    borderRadius: 50,
+    position: 'absolute',
+    left: 180,
+    top: 140
+  },
+  low3: {
     height: 80,
     width: 110,
     borderWidth: 2,
     borderRadius: 50,
-    position: 'relative',
-    left: -170,
-    top: -20
+    position: 'absolute',
+    left: 300,
+    top: 140
+  },
+  low5: {
+    height: 80,
+    width: 110,
+    borderWidth: 2,
+    borderRadius: 50,
+    position: 'absolute',
+    left: 420,
+    top: 140
+  },
+  low6: {
+    height: 80,
+    width: 110,
+    borderWidth: 2,
+    borderRadius: 50,
+    position: 'absolute',
+    left: 530,
+    top: 140
+  },
+  mid1: {
+    height: 80,
+    width: 110,
+    borderWidth: 2,
+    borderRadius: 50,
+    position: 'absolute',
+    left: 65,
+    top: 140
+  },
+  mid2: {
+    height: 60,
+    width: 90,
+    borderWidth: 2,
+    borderRadius: 50,
+    position: 'absolute',
+    left: 530,
+    top: 80
+  },
+  mid3: {
+    height: 60,
+    width: 90,
+    borderWidth: 2,
+    borderRadius: 50,
+    position: 'absolute',
+    left: 410,
+    top: 80
+  },
+  high5: {
+    height: 60,
+    width: 90,
+    borderWidth: 2,
+    borderRadius: 50,
+    position: 'absolute',
+    left: 300,
+    top: 80
+  },
+  high6: {
+    height: 60,
+    width: 90,
+    borderWidth: 2,
+    borderRadius: 50,
+    position: 'absolute',
+    left: 200,
+    top: 80
+  },
+  high1: {
+    height: 60,
+    width: 90,
+    borderWidth: 2,
+    borderRadius: 50,
+    position: 'absolute',
+    left: 90,
+    top: 80
+  },
+  high2: {
+    height: 60,
+    width: 90,
+    borderWidth: 2,
+    borderRadius: 50,
+    position: 'absolute',
+    left: 630,
+    top: 80
   }
 })
 
