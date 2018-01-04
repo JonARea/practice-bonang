@@ -15,8 +15,8 @@ class StartScreen extends React.Component {
 
   componentDidMount() {
     this.props.loadSlendro(sounds.slendro)
-    this.props.loadPelog(sounds.pelog)
-    console.log(this.state.loadingStatus)
+    // this.props.loadPelog(sounds.pelog)
+
   }
 
   componentWillReceiveProps(nextProps) {

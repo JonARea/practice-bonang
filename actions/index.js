@@ -29,21 +29,34 @@ const loadedPelog = (sounds, names, elements) => ({
 //thunks
 
 export const loadSlendroThunk = (sounds, names, elements) => dispatch => {
-  const loadingElements = elements.map((element, index) => {
-    return element.loadAsync(sounds[names[index]], {}, true)
+
+  elements.forEach((element, index) => {
+    element.setOnPlaybackStatusUpdate((status) => {
+      if (status.didJustFinish) {
+        element.pauseAsync()
+        element.setPositionAsync(0)
+      }
+    })
+    element.loadAsync(sounds[names[index]], {}, true)
   })
-  Promise.all(loadingElements)
+  Promise.all(elements)
     .then(loadedElements => dispatch(loadedSlendro(sounds, names, loadedElements)))
+    .then(() => dispatch(finishedLoading()))
+    .catch(console.error)
 }
 
 export const loadPelogThunk = (sounds, names, elements) => dispatch => {
-  const loadingElements = elements.map((element, index) => {
-    return element.loadAsync(sounds[names[index]], {}, true)
-  })
-  Promise.all(loadingElements)
-    .then(loadedElements => {
-      return dispatch(loadedPelog(sounds, names, loadedElements))
+  elements.forEach((element, index) => {
+    element.setOnPlaybackStatusUpdate((status) => {
+      if (status.didJustFinish) {
+        element.pauseAsync()
+        element.setPositionAsync(0)
+      }
     })
+    element.loadAsync(sounds[names[index]], {}, true)
+  })
+  Promise.all(elements)
+    .then(loadedElements => dispatch(loadedPelog(sounds, names, loadedElements)))
     .then(() => dispatch(finishedLoading()))
     .catch(console.error)
 }
