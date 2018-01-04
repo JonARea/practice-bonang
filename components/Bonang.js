@@ -28,12 +28,7 @@ const soundElements = fileNames.map(file => new Audio.Sound())
 soundElements.forEach((element, index) => {
   try {
     element.loadAsync(audioFileObject[fileNames[index]], {}, true)
-    element.setOnPlaybackStatusUpdate(status => {
-      if (status.didJustFinish) {
-        element.pauseAsync()
-        element.setPositionAsync(0)
-      }
-    })
+
   } catch (err) {
     console.error(err)
   }
@@ -65,7 +60,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   bonang: {
-    width: 700,
+    width: '90%',
     overflow: 'visible',
     position: 'absolute'
   },
@@ -75,8 +70,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 50,
     position: 'absolute',
-    left: 640,
-    top: 140
+    left: '80%',
+    top: '45%'
   },
   low2: {
     height: 80,
@@ -84,8 +79,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 50,
     position: 'absolute',
-    left: 180,
-    top: 140
+    left: '22%',
+    top: '45%'
   },
   low3: {
     height: 80,
@@ -93,8 +88,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 50,
     position: 'absolute',
-    left: 300,
-    top: 140
+    left: '35%',
+    top: '45%'
   },
   low5: {
     height: 80,
@@ -102,8 +97,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 50,
     position: 'absolute',
-    left: 420,
-    top: 140
+    left: '51%',
+    top: '45%'
   },
   low6: {
     height: 80,
@@ -111,8 +106,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 50,
     position: 'absolute',
-    left: 530,
-    top: 140
+    left: '66%',
+    top: '45%'
   },
   mid1: {
     height: 80,
@@ -120,8 +115,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 50,
     position: 'absolute',
-    left: 65,
-    top: 140
+    left: '6%',
+    top: '45%'
   },
   mid2: {
     height: 60,
@@ -129,8 +124,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 50,
     position: 'absolute',
-    left: 530,
-    top: 80
+    left: '51%',
+    top: '25%'
   },
   mid3: {
     height: 60,
@@ -138,8 +133,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 50,
     position: 'absolute',
-    left: 410,
-    top: 80
+    left: '37%',
+    top: '25%'
   },
   high5: {
     height: 60,
@@ -147,8 +142,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 50,
     position: 'absolute',
-    left: 300,
-    top: 80
+    left: '24%',
+    top: '25%'
   },
   high6: {
     height: 60,
@@ -156,8 +151,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 50,
     position: 'absolute',
-    left: 200,
-    top: 80
+    left: '9%',
+    top: '25%'
   },
   high1: {
     height: 60,
@@ -165,8 +160,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 50,
     position: 'absolute',
-    left: 90,
-    top: 80
+    left: '65%',
+    top: '25%'
   },
   high2: {
     height: 60,
@@ -174,8 +169,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 50,
     position: 'absolute',
-    left: 630,
-    top: 80
+    left: '78%',
+    top: '25%'
   }
 })
 
