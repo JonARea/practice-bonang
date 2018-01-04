@@ -3,38 +3,38 @@ import {View, Image, TouchableOpacity, StyleSheet, Text} from 'react-native'
 import {Audio} from 'expo'
 import {TabNavigator} from 'react-navigation'
 import BonangPic from '../assets/bonang.png'
+import {setUpSoundObject} from '../utils/sounds'
 
 import low1 from '../assets/BonangNL-Low1.wav'
 import low2 from '../assets/BonangNL-Low2.wav'
+import low3 from '../assets/BonangNL-Low3.wav'
+import low5 from '../assets/BonangNL-Low5.wav'
+import low6 from '../assets/BonangNL-Low6.wav'
+import mid1 from '../assets/BonangNL-Mid1.wav'
+import mid2 from '../assets/BonangNL-Mid2.wav'
+import mid3 from '../assets/BonangNL-Mid3.wav'
+import high5 from '../assets/BonangNL-High5.wav'
+import high6 from '../assets/BonangNL-High6.wav'
+import high1 from '../assets/BonangNL-High1.wav'
+import high2 from '../assets/BonangNL-High2.wav'
 
-const low1Sound = new Audio.Sound();
-const low2Sound = new Audio.Sound();
+const audioFileArray = [low1, low2, low3, low5, low6, mid1, mid2, mid3, high5, high6, high1, high2]
+
+const soundElements = audioFileArray.map(file => new Audio.Sound())
+
+soundElements.forEach((element, index) => {
   try {
-    low1Sound.loadAsync(low1, {}, true)
-    low1Sound.setOnPlaybackStatusUpdate(status => {
+    element.loadAsync(audioFileArray[index], {}, true)
+    element.setOnPlaybackStatusUpdate(status => {
       if (status.didJustFinish) {
-        low1Sound.pauseAsync()
-        low1Sound.setPositionAsync(0)
-
+        element.pauseAsync()
+        element.setPositionAsync(0)
       }
     })
   } catch (err) {
     console.error(err)
   }
-
-  try {
-    low2Sound.loadAsync(low2, {}, true)
-    low2Sound.setOnPlaybackStatusUpdate(status => {
-      if (status.didJustFinish) {
-        low2Sound.pauseAsync()
-        low2Sound.setPositionAsync(0)
-
-      }
-    })
-  } catch (err) {
-    console.error(err)
-  }
-
+})
 
 class BonangScreen extends React.Component {
 
